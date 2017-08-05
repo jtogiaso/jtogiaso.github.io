@@ -226,6 +226,7 @@ h2 {
 
 .portfolioOptions li a h2 {
 	background-color: #4aaaaf;
+	border: 1px solid black;
 }
 
 .nth2 {
