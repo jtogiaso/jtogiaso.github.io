@@ -210,9 +210,24 @@ h2 {
 	display: flex;
 	justify-content: space-between;
 	list-style-type: none;*/
+	display: table;
+	width: 100%;
 }
 
 .portfolioOptions li a img {
 	width: 275px;
 	height: 275px;
+	display: table-cell;
+	padding: 10px;
+	margin: 5px 0;
+	border: 1px solid #dddddd;
+	position: relative;
+}
+
+.portfolioOptions li a h2 {
+	background-color: #4aaaaf;
+}
+
+.nth2 {
+	float: right;
 }
