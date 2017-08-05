@@ -63,6 +63,22 @@ ul.siteLegend {
 	line-height: 90px;
 }
 
+a:link {
+    color: #800080;
+}
+
+a:visited {
+    color: #008000;
+}
+
+a:hover {
+    color: #ff0000;
+}
+
+a:active {
+    color: #ffff00;
+}
+
 a {
 	text-decoration: none;
 }
@@ -93,7 +109,7 @@ section.mainContent {
 	border-style: solid;
 	border-color: #dddddd;
 	left: 0;
-	padding: 10px;
+	padding: 25px;
 }
 
 header.mainContentHeader {
@@ -144,6 +160,7 @@ aside.connectWithMe {
 	display: flex;
 	justify-content: space-between;
 	list-style-type: none;
+	padding: 10px 0;
 }
 
 ul.connectOptions li a img {
@@ -175,20 +192,42 @@ footer {
 	border-color: #dddddd;
 }
 
+.inputPar {
+	margin: 10px 0;
+	padding: 5px;
+	border: 1px;
+	border-style: solid;
+	border-color: #dddddd;
+	width: 98%
+}
+
+.inputPar::placeholder {
+	opacity: .25;
+}
+
 .messageBox {
 	height: 200px;
 }
 
-.inputPar {
-	width: 100%;
-	border: 1px;
-	border-style: solid;
-	border-color: #dddddd;
-	margin: 10px 0;
-}
 
 h2 {
 	font-size: 150%;
+}
+
+button {
+	display: inline-block;
+	color: #ffffff;
+	text-align: center;
+	line-height: 45px;  
+	font-family: 'Georgia', Times, serif;
+	background-color: #4aaaa5;
+	font-size: 110%;
+	padding: 0 20px;
+	border: 2px solid #000000;
+}
+
+button:hover {
+	background-color: #ff0000;
 }
 
 /*Index HTML Page*/
@@ -206,10 +245,7 @@ h2 {
 
 /*Portfolio HTML Page*/
 
-.portfolioOptions {/*
-	display: flex;
-	justify-content: space-between;
-	list-style-type: none;*/
+.portfolioOptions {
 	display: table;
 	width: 100%;
 }
@@ -218,15 +254,22 @@ h2 {
 	width: 275px;
 	height: 275px;
 	display: table-cell;
-	padding: 10px;
-	margin: 5px 0;
-	border: 1px solid #dddddd;
-	position: relative;
+	padding: 10px 0;
+	margin: 20px 0;
 }
 
-.portfolioOptions li a h2 {
+.portfolioOptions li a {
+	position: relative;
+	width: 100%;
+}
+
+.portfolioOptions li h2 {
+	position: relative;
+	top: -100px;
+	color: #ffffff;
 	background-color: #4aaaaf;
-	border: 1px solid black;
+	text-align: center;
+	line-height: 50px;
 }
 
 .nth2 {
