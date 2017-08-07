@@ -1,0 +1,277 @@
+/*Page Defaults*/
+
+* {
+	color: #777777;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+html {
+	height: 100%;
+	margin: 0;
+}
+
+/*Body Specs*/
+
+body {
+	background-color: #4aaaaf;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+.fullWrapper {
+	width: 960px;
+	margin: 0 auto;
+	position: relative;
+}
+
+/*Page Header*/
+
+header {
+	margin: auto;
+	font-weight: bold;
+	background-color: #ffffff;
+	width: 100%;
+}
+
+.mainHeaderStyle{
+	border-bottom: 2px solid #cccccc;
+
+}
+
+div.namePlate {
+	display: inline-block;
+	color: #ffffff;
+	text-align: center;
+	line-height: 90px;  
+	font-family: 'Georgia', Times, serif;
+	background-color: #4aaaa5;
+	font-size: 150%;
+	padding: 0 20px;
+}
+
+ul.siteLegend {
+	font-size: 110%;
+	position: absolute;
+	top: 0;
+	right: 10px;
+	bottom: 0;
+	left: auto;
+	text-align: center;
+	line-height: 90px;
+}
+
+a:link {
+    color: #800080;
+}
+
+a:visited {
+    color: #008000;
+}
+
+a:hover {
+    color: #ff0000;
+}
+
+a:active {
+    color: #ffff00;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	display: inline-block;
+}
+
+/*Main Section*/
+
+main {
+	min-height: calc(100vh - 272px);
+	margin: 0 auto;
+	padding: 50px;
+	padding-bottom: 0;
+	background-image: url(../images/concrete-texture.png);
+}
+
+.contentWrapper {
+	width: 650px;
+	margin: 0;
+	display: inline-block;
+}
+
+section.mainContent {
+	background-color: #ffffff;
+	border: 1px;
+	border-style: solid;
+	border-color: #dddddd;
+	left: 0;
+	padding: 25px;
+}
+
+header.mainContentHeader {
+	height: 50px;
+	color: #4aaaa5;
+	font-size: 300%;
+	border-bottom: 5px;
+	border-style: solid;
+	border-color: #dddddd;
+	font-weight: bold;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	line-height: 50px;
+}
+
+/*Side Bar*/
+
+.asideWrapper {
+	display: inline-block;
+	position: absolute;
+	right: 0;
+	width: 270px;
+}
+
+aside.connectWithMe {
+	font-weight: bold;
+	background-color: #ffffff;
+	border: 1px;
+	border-style: solid;
+	border-color: #e3e3e3;
+	padding: 21px;
+}
+
+.asideHeader {
+	font-size: 190%;
+	border-bottom: 5px;
+	border-style: solid;
+	border-color: #dddddd;
+	font-weight: bold;
+	color: #4aaaaf;
+	line-height: 50px;
+	height: 50px;
+}
+
+.connectOptions {
+	margin-top: 10px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	list-style-type: none;
+	padding: 10px 0;
+}
+
+ul.connectOptions li a img {
+	width: 60px;
+	height: 60px;
+}
+
+/*Footer*/
+
+footer {
+	height: 125px;
+	background-color: #666666;
+	margin: 0 auto;
+	border-top: 5px solid #4aaaaf;
+	text-align: center;
+	line-height: 125px;
+	width: 100%;
+}
+
+.footerWords {
+	color: #ffffff;	
+}
+
+/*Contact HTML Page*/
+
+.nameSpot {
+	border: 1px;
+	border-style: solid;
+	border-color: #dddddd;
+}
+
+.inputPar {
+	margin: 10px 0;
+	padding: 5px;
+	border: 1px;
+	border-style: solid;
+	border-color: #dddddd;
+	width: 98%
+}
+
+.inputPar::placeholder {
+	opacity: .25;
+}
+
+.messageBox {
+	height: 200px;
+}
+
+
+h2 {
+	font-size: 150%;
+}
+
+button {
+	display: inline-block;
+	color: #ffffff;
+	text-align: center;
+	line-height: 45px;  
+	font-family: 'Georgia', Times, serif;
+	background-color: #4aaaa5;
+	font-size: 110%;
+	padding: 0 20px;
+	border: 2px solid #000000;
+}
+
+button:hover {
+	background-color: #ff0000;
+}
+
+/*Index HTML Page*/
+
+.profilePic {
+	border-radius: 50%;
+	float: left;
+	margin: 10px;
+}
+
+.bioText {
+	line-height: 2;
+	margin: 5px;
+}
+
+/*Portfolio HTML Page*/
+
+.portfolioOptions {
+	display: table;
+	width: 100%;
+}
+
+.portfolioOptions li a img {
+	width: 275px;
+	height: 275px;
+	display: table-cell;
+	padding: 10px 0;
+	margin: 20px 0;
+}
+
+.portfolioOptions li a {
+	position: relative;
+	width: 100%;
+}
+
+.portfolioOptions li h2 {
+	position: relative;
+	top: -100px;
+	color: #ffffff;
+	background-color: #4aaaaf;
+	text-align: center;
+	line-height: 50px;
+}
+
+.nth2 {
+	float: right;
+}
