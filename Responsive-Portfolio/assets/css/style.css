@@ -280,7 +280,7 @@ button:hover {
 @media screen and (max-width: 640px) {
 
 	html {
-		width: 634px;
+		width: 640px;
 	}
 	
 	div.namePlate {
@@ -339,7 +339,7 @@ button:hover {
 @media screen and (min-width: 641px) and (max-width: 768px) {
 
 	html {
-		width: 761px;
+		width: 768px;
 	}
 
 	.mainBody {
@@ -374,7 +374,7 @@ button:hover {
 @media screen and (min-width: 769px) and (max-width: 980px) {
 
 	html {
-		width: 960px;
+		width: 980px;
 	}
 
 
