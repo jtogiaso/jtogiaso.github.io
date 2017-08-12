@@ -1,0 +1,121 @@
+/*Body Specs*/
+
+body {
+	background-color: #4aaaaf;
+}
+
+/*Page Header*/
+
+header.row {
+	background-color: #ffffff;
+	border-bottom: 2px solid #cccccc;
+}
+
+header div h1.namePlate {
+	border-radius: 0 !important;
+	color: #ffffff;
+	font-family: 'Georgia', Times, serif;
+	background-color: #4aaaa5;
+	font-weight: bold;
+	margin: 0;
+}
+
+a:link {
+    color: #800080;
+}
+
+a:visited {
+    color: #008000;
+}
+
+a:hover {
+    color: #ff0000;
+}
+
+a:active {
+    color: #ffff00;
+}
+
+a {
+	text-decoration: none;
+}
+
+/*Main Section*/
+
+main {
+	min-height: calc(100vh - 301px);
+	background-image: url(../images/concrete-texture.png);
+}
+
+section {
+	border: 1px solid #dddddd;
+	padding: 5px;
+	background-color: #ffffff;
+}
+
+main section div div h1.mainContentHeader{
+	color: #4aaaa5;
+	border-bottom: 5px solid #dddddd;
+}
+
+/*Side Bar*/
+
+aside.connectWithMe {
+	background-color: #ffffff;
+	border: 1px solid #e3e3e3;
+}
+
+aside div div div h1 {
+	border-bottom: 5px solid #dddddd;
+	color: #4aaaaf;
+}
+
+nav ul li a img {
+	width: 75px;
+}
+
+/*Footer*/
+
+footer.footerStyle {
+	width: 100%;
+	height: 125px;
+	background-color: #666666;
+	border-top: 5px solid #4aaaaf;
+	text-align: center;
+	color: #ffffff;
+	margin: 0 auto;
+}
+
+footer div h1 {
+	line-height: 75px;
+}
+
+
+/*Contact HTML Page*/
+
+button {
+	display: inline-block;
+	color: #ffffff;
+	text-align: center;
+	line-height: 45px;  
+	font-family: 'Georgia', Times, serif;
+	background-color: #4aaaa5;
+	font-size: 110%;
+	padding: 0 20px;
+	border: 2px solid #000000;
+}
+
+button:hover {
+	background-color: #ff0000;
+}
+
+/*Index HTML Page*/
+
+.profilePic {
+	border-radius: 50%;
+}
+
+/*Portfolio HTML Page*/
+main section div div a img.imgSize {
+	height: 250px;
+}
