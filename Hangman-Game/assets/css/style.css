@@ -1,0 +1,82 @@
+html {
+	min-height: 100vh;
+	background-image: url("../images/avatarStateElements.png");	
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-color: black;
+}
+
+body {
+	background: transparent;
+	color: olive;
+}
+
+.spaceDiv {
+	height: 50px;
+}
+
+
+#titleDiv {
+	background: transparent;
+	color: orange;
+	font-size: 150px;/*
+	
+	background-image: url("../images/AzulaVsZukoFireBending.gif");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	height: 95%;
+	margin: auto;*/
+}
+
+.borderHelp {
+	border: 5px dotted aqua;
+	margin: 0 auto;
+}
+
+.parentBorderHelp {
+	border: 5px solid gray;
+	margin: 0 auto;
+}
+
+.halfHeight {
+	height: 50%;
+}
+
+.fullHeight {
+	height: 100%;
+}
+
+.wLRecordSize{
+	font-size: 125px;
+}
+
+.largerLetters {
+	font-size: 35px;
+}
+
+.bigLetters {
+	font-size: 50px;
+}
+
+.largeSpecHeight {
+	height: 400px;
+}
+
+.darkerBG{
+	background: rgba(0 , 0 , 0 , 0.5);
+}
+
+.phraseCenter {
+	margin: 170px auto;
+}
+
+.hangmanPix {
+	height: 100%;
+	width: 100%;
+}
+
+
+.helpImage {
+	height: 100%;
+	width: 100%;	
+}
