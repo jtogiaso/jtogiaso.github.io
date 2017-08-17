@@ -25,15 +25,14 @@ var helpCenter = document.getElementById("helpCenter");
 var audioPlayer = document.getElementById("audioPlayer");
 
 
-//Any key will "Start" the game by sending the "user" to the newWord function
+//Any key will "Start" the game by sending the "user" to the reset() function
 document.onkeydown = function(letterKey) {
-	console.log(letterKey);
 	instructionCenter.textContent = "Press letter keys to guess and help Aang defeat Ozai!";
-	newWord();	
+	reset();	
 }
 
 //Re-initalizes all appropriate variables. If the user were to restart the game, each variable will be re-intialized upon this function being recalled
-function newWord () {
+function reset() {
 	hangmanWord = listOfRandomWords[getRandomInt(0 , listOfRandomWords.length - 1)];
 	hiddenWordArray = [];
 	for (var i = 0; i < hangmanWord.length; i++){
@@ -61,9 +60,9 @@ function gameLogic () {
 		console.log(keyPress);
 
 		if (hangmanWord.indexOf(keyPress.key) === -1) {
+			audioPlayer.src = "assets/images/noYouIdiot.mp3";
+			audioPlayer.play();
 			if (incorrectGuessArray.indexOf(keyPress.key) === -1 && keyPress.keyCode >= 65 && keyPress.keyCode <= 90) {
-				audioPlayer.src = "assets/images/noYouIdiot.mp3";
-				audioPlayer.play();
 				incorrectGuessArray.push(keyPress.key);
 				incorrectGuessArray = incorrectGuessArray.join(" ");
 				failedGuessCenter.textContent = incorrectGuessArray;
@@ -71,10 +70,6 @@ function gameLogic () {
 				numberOfGuessesLeft--;
 				numberOfGuessesLeftCenter.textContent = "Number of guesses left: " + numberOfGuessesLeft;
 				hangmanStateChange();
-			}
-			else {
-				audioPlayer.src = "assets/images/whatRUDoing.mp3";
-				audioPlayer.play();
 			}
 		}
 		else {
@@ -113,7 +108,7 @@ function getOutOfOriginalOnKeyUpLose () {
 		console.log("You pressed this button: " + pressedKey.key);
 		if (pressedKey.key === "Enter") {
 			instructionCenter.textContent = "Press letter keys to guess and help Aang defeat Ozai!";
-			newWord();
+			reset();
 		}
 	}
 }
@@ -128,7 +123,7 @@ function getOutOfOriginalOnKeyUpWin () {
 		console.log("You pressed this button: " + pressedKey.key);
 		if (pressedKey.key === "Enter") {
 			instructionCenter.textContent = "Press letter keys to guess and help Aang defeat Ozai!";
-			newWord();
+			reset();
 		}
 	}
 
@@ -174,5 +169,4 @@ function winState() {
 	helpCenter.textContent = "Nice!";
 	audioPlayer.src = "assets/images/nowCheckWin.mp3";
 	audioPlayer.play();
-
 }
