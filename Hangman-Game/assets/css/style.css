@@ -1,7 +1,7 @@
 html {
 	min-height: 100vh;
-	background-image: url("../images/avatarStateElements.png");	
-	background-size: 100% 100%;
+	background-image: url("../images/avatarState.png");	
+	background-size: 100%;
 	background-repeat: no-repeat;
 	background-color: black;
 }
@@ -18,14 +18,7 @@ body {
 
 #titleDiv {
 	background: transparent;
-	color: orange;
-	font-size: 150px;/*
-	
-	background-image: url("../images/AzulaVsZukoFireBending.gif");
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
-	height: 95%;
-	margin: auto;*/
+	font-size: 150px;
 }
 
 .borderHelp {
@@ -63,7 +56,7 @@ body {
 }
 
 .darkerBG{
-	background: rgba(0 , 0 , 0 , 0.5);
+	background: rgba(0 , 0 , 0 , 0.9);
 }
 
 .phraseCenter {
@@ -80,7 +73,16 @@ body {
 	height: 100%;
 	width: 100%;	
 }
+.flash {
+   	animation-name: flashing;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-play-state: running;
+}
 
-#helpCenter {
-	color: aquamarine;
+@keyframes flashing {
+    from {color: red;}
+    to {color: black;}
 }

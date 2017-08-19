@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html class="fullHeight">
 	<head>
-		<title>AangMan</title>
+		<title>Aang vs Ozai in Hangman</title>
 		<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<script type="text/javascript" src="assets/javascript/game.js"></script>
 	</head>
 	<body class="fullHeight">
 		<div class="row spaceDiv"></div>
@@ -16,11 +17,13 @@
 					<div class="col-lg-3 borderHelp fullHeight darkerBG">
 						<div class="row halfHeight">
 							<div class="col-lg-12">
+								<h2 class="text-center flash" id="flashingInstructions">Instructions!</h2>
 								<h2 class="text-center" id="instructionCenter">Press Any Key to Begin!</h2>
 							</div>
 						</div>
 						<div class="row halfHeight">
 							<div class="col-lg-6">
+								<h3 class="text-center">Aang's Status Below:</h3>
 								<div class="text-center" id="helpCenter">Aang is energybending against Ozai. Help make sure Aang's spirit does not become corrupted!</div>
 							</div>
 							<div class="col-lg-6">
@@ -29,9 +32,9 @@
 						</div>
 					</div>
 					<div class="col-lg-6 borderHelp fullHeight">
-						<h1 class="jumbotron text-center" id="titleDiv">AangMan!</h1>
+						<h1 class="jumbotron text-center" id="titleDiv">AANGMAN</h1>
 					</div>
-					<div class="col-lg-3 borderHelp fullHeight">
+					<div class="col-lg-3 borderHelp fullHeight darkerBG">
 						<h3 class="text-center halfHeight" id="numberOfLossesCenter">Your Win-Loss Record</h3>
 						<h3 class="text-center halfHeight wLRecordSize" id="winLossCenter">- - -</h3>
 					</div>
@@ -65,7 +68,5 @@
 				</audio>
 			</div>
 		</div>
-		
-		<script type="text/javascript" src="assets/javascript/game.js"></script>
 	</body>
 </html>
