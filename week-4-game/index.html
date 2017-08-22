@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="">
+	<head>
+		<title>Team Avatar: Training</title>
+		<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="assets/javascript/game.js"></script>
+	</head>
+	<body>
+		<div class="row containerRow">
+			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 height100">
+			</div>
+			<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 height100">
+				<div class="row title">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<h2 class="text-center titleDiv">AvaSpar</h2>
+					</div>
+				</div>
+				<div class="row chooseFighter text-center">
+					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" id="slateOfFigters">
+						<div id="Aang"  class="initialFighter text-center fighterCard" health="">
+							<div>Aang</div>
+							<img src="assets/images/aang.png">
+							<div id="AangHP"></div>
+						</div>
+						<div id="Katara" class="initialFighter text-center fighterCard">
+							<div>Katara</div>
+							<img src="assets/images/katara.png">
+							<div id="KataraHP"></div>
+						</div>
+						<div id="Toph"  class="initialFighter text-center fighterCard">
+							<div>Toph</div>
+							<img src="assets/images/toph.png">
+							<div id="TophHP"></div>
+						</div>
+						<div id="Zuko"  class="initialFighter text-center fighterCard">
+							<div>Zuko</div>
+							<img src="assets/images/zuko.png">
+							<div id="ZukoHP"></div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+						<h3 class="text-center" id="instructionCenter">Choose Your Fighter</h3>
+					</div>
+				</div>
+				<div class="row buttons">
+					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 text-center">
+						<button id="attackButton">ATTACK!</button>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">
+					</div>
+				</div>
+				<div class="row fightStage text-center">
+					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" id="mainOpponent">
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">
+						<div id="fighterAttack"></div>
+						<div id="counterAttack"></div>
+						<button id="restartBtn">Restart</button>
+					</div>
+				</div>
+				<div class="row opponentSlate text-center">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<h3 class="text-center">
+							Slate of Opponents
+						</h3>
+						<div id="slateOfOpponents">
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<h3 class="text-center">
+							Defeated Opponents
+						</h3>
+						<div id="defeatedOpponents">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 height100">
+			</div>
+		</div>
+	</body>
+</html>

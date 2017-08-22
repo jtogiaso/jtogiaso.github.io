@@ -1,0 +1,59 @@
+* {
+	color: white;
+}
+
+html {
+	min-height: 100vh;
+	background-image: url("../images/earthRumbleArena.png");	
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-color: black;
+}
+
+img {
+	height: 200px;
+	width: 200px;
+}
+
+.titleDiv {
+	color: black;
+}
+
+button {
+	color: purple;
+}
+
+.fighterCard {
+	display: inline-block;
+	border: solid aquamarine 5px;
+	background-color: black; 
+}
+
+/*div.chosenOpponent {
+	height: 210px;
+}
+*/
+div div.row {
+	margin: 20px;
+}
+
+.containerRow {
+	height: 100vh;
+	width: 100.79vw;
+}
+
+.height100 {
+	height: 100%;
+	background: transparent;
+}
+
+body {
+	background: transparent;
+}
+
+
+.opponentCard {
+	display: inline-block;
+	border: solid red 5px;
+	background-color: white; 
+}
