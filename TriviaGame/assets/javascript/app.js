@@ -5,6 +5,7 @@ var game = {
 	chosenQuestion: 0,
 	totalNumberOfQuestionsAnswered: 0,
 	questionsAlreadyAnsweredIndices: [],
+	answerString: "",
 	questions: [
 		"Which quarterback has won 4 Superbowl Titles?" ,
 		"What is Steph Curry's record for most made 3-pointers in a season?",
@@ -80,16 +81,9 @@ var game = {
 
 	    //Must find a way to move this to Dom Manipulation
 	    $("div.timer").html("Time Remaining: " + game.stopwatch.time + " Seconds");
-	    //  TODO: Get the current time, pass that into the stopwatch.timeConverter function,
-	    //        and save the result in a variable.
-	    // var currentTime = game.stopwatch.timeConverter(game.stopwatch.time);
-	    //  TODO: Use the variable you just created to show the converted time in the "display" div.
-	    // $("#display").text(currentTime);
 	    if (game.stopwatch.time === 0){
-
 	    	ui.questionAnswered({});
 	    };
-
 	  }
 	}
 }
@@ -112,6 +106,7 @@ var ui = {
 			this.answerDiv("div", game.answers[game.chosenQuestion][i],"answer mainBodyDiv", ".answersBox");
 		};
 		game.totalNumberOfQuestionsAnswered++;
+		game.answerString = $(".correctAnswer").text();
 	},
 	otherDiv: function(elementType, htmlText, classesAdded, parentElement) {
 		$("<" + elementType + ">")
@@ -141,6 +136,9 @@ var ui = {
 			game.numOfQuestionsCorrectlyAnswered++;
 		}
 		else {
+			$("<div>")
+				.html("The correct answer was: " + game.answerString)
+				.appendTo(".answersBox");
 			if ($(object).hasClass("answer")) {
 				$(".currentQuestion")
 					.html("Nope");

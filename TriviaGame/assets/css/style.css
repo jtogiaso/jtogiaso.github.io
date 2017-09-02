@@ -57,3 +57,8 @@ body {
 	border: dashed gray 1px;
 	background-color: purple;
 }
+
+img {
+	height: 400px;
+	width: 400px;
+}
