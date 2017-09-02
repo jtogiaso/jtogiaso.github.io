@@ -1,0 +1,59 @@
+* {
+	background: transparent;
+	color: white;
+}
+
+body {
+	min-height: 100vh;
+	background-image: url("../images/sportsBG.jpg");	
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-color: black;
+	font-family: "Comic Sans MS", Times, serif;
+}
+
+.mainBody {
+	background-color: orange;
+}
+
+.smallHeight {
+	height: 3vh;
+}
+
+.title {
+	font-size: 45px;
+	color: maroon;
+}
+
+.startBtn {
+	display: inline-block;
+	border: solid black 5px;
+	padding: 5px 25px;
+	background-color: turquoise;
+}
+
+.startBtn:hover {
+	background-color: yellow;
+	color: black;
+}
+
+.mainRow {
+	height: 75vh;
+	display: flex;
+	align-items: center;
+	font-size: 25px;
+}
+
+.mainBodyDiv {
+	padding: 5px auto;
+	margin: 25px auto;
+}
+
+.answer {
+	font-size: 35px;
+}
+
+.answer:hover {
+	border: dashed gray 1px;
+	background-color: purple;
+}
