@@ -6,20 +6,44 @@ var game = {
 	totalNumberOfQuestionsAnswered: 0,
 	questionsAlreadyAnsweredIndices: [],
 	answerString: "",
+	questionLimit: 7,
 	questions: [
 		"Which quarterback has won 4 Superbowl Titles?" ,
 		"What is Steph Curry's record for most made 3-pointers in a season?",
-		"Who is the longest tenured Sharks player in franchise history?"
+		"Who is the longest tenured Sharks player in franchise history?",
+		"Who is the other Splash Brother not named Curry?",
+		"Which of the following Running Backs is the 49ers franchise rushing leader?",
+		"In what year was the first season of the Sharks held?",
+		"Which of the following was the only quarterback to lose a Superbowl?",
+		"Who is the only winner of the Hart Trophy in Sharks franchise history?",
+		"Which of the following players holds the MLB record for home runs of 73?",
+		"Which Giants pitcher did not start a single game in the 2010 World Series?"
+
 	],
 	answers: [
 		["Joe Montana.cor" , "Steve Young" , "Colin Kaepernick" , "Jeff Garcia"],
 		["272" , "324" , "402.cor" , "410"],
-		["Patrick Marleau.cor" , "Joe Thorton" , "Joe Pavelski" , "Marc-Edouard Vlasic"]
+		["Patrick Marleau.cor" , "Joe Thorton" , "Joe Pavelski" , "Marc-Edouard Vlasic"],
+		["Shaun Livingston" , "Klay Thompson.cor" , "Zaza Pachulia" , "Ian Clark"],
+		["Roger Craig" , "Ricky Watters" , "Garrison Hearst" , "Frank Gore.cor"],
+		["2001" , "1991.cor" , "1981" , "1995"],
+		["Steve Young" , "Colin Kaepernick.cor" , "Y.A. Tittle" , "Trent Dilfer"],
+		["Tony Granato" , "Brent Burns" , "Patrick Marleau" , "Joe Thorton.cor"],
+		["Barry Bonds.cor" , "Buster Posey" , "Willie Mays" , "Tim Lincecum"],
+		["Tim Lincecum" , "Matt Cain" , "Barry Zito.cor" , "Madison Bumgarner"]
 	],
 	gifs: [
 		"joeM.gif", 
 		"stephC.gif", 
-		"patrickM.gif"
+		"patrickM.gif",
+		"klayT.gif",
+		"frankG.gif",
+		"sharks.gif",
+		"colinK.gif",
+		"joeT.gif",
+		"barryB.gif",
+		"barryZ.gif"
+
 	],
 	randomNumGenerator: function(max , min) {
 		return Math.floor(Math.random() * (max - min) + min);
@@ -153,7 +177,7 @@ var ui = {
 		$("<img>")
 			.attr("src" , "assets/images/" + game.gifs[game.chosenQuestion])
 			.appendTo(".answersBox");
-		if (game.totalNumberOfQuestionsAnswered === 3) {
+		if (game.totalNumberOfQuestionsAnswered === game.questionLimit) {
 	        setTimeout(function() {
 	        	ui.gameOver();
 	        }, 5000);
