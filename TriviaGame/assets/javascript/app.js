@@ -1,7 +1,9 @@
 var game = {
 	numOfQuestionsCorrectlyAnswered: 0,
 	numOfQuestionsIncorrectlyAnswered: 0,
-	chosenQuestion: 1,
+	numOfQuestionsUnanswered: 0,
+	chosenQuestion: 0,
+	totalNumberOfQuestionsAnswered: 0,
 	questionsAlreadyAnsweredIndices: [],
 	questions: [
 		"Which quarterback has won 4 Superbowl Titles?" ,
@@ -21,14 +23,32 @@ var game = {
 	randomNumGenerator: function(max , min) {
 		return Math.floor(Math.random() * (max - min) + min);
 	},
+	uniqueIndex: function(){
+		var throwAway = this.randomNumGenerator(this.questions.length, 0);
+		if (this.questionsAlreadyAnsweredIndices.indexOf(throwAway) === -1){
+			return throwAway;
+		}
+		else {
+			return this.uniqueIndex();
+		}
+	},
 	chosenQuestionFx: function() {
-		this.chosenQuestion = this.randomNumGenerator(this.questions.length, 0);
+		this.chosenQuestion = this.uniqueIndex();
+		this.questionsAlreadyAnsweredIndices.push(this.chosenQuestion);
 	},
 	correctAnswerExtPopOff: function(correctAnswer) {
 		return correctAnswer.slice(0, correctAnswer.lastIndexOf("."));
 	},
 	questionAnsweredTimer: function() {
 
+	},
+	reset: function() {
+		game.numOfQuestionsCorrectlyAnswered = 0;
+		game.numOfQuestionsIncorrectlyAnswered = 0;
+		game.numOfQuestionsUnanswered = 0;
+		game.chosenQuestion = 0;
+		game.totalNumberOfQuestionsAnswered = 0;
+		game.questionsAlreadyAnsweredIndices = [];
 	},
 	intervalId: 0,
 	//prevents the clock from being sped up unnecessarily
@@ -37,34 +57,24 @@ var game = {
 	stopwatch: {
 	  time: 5,
 	  reset: function() {
-	  	console.log("I have restarted.");
 	    game.stopwatch.time = 5;
-	    console.log(game.clockRunning);
 	    //  TODO: Change the "display" div to "00:00."
 	  },
 	  start: function() {
-	  		console.log("The clock has started.");
-	  		console.log(game.clockRunning);
 	      //  TODO: Use setInterval to start the count here and set the clock to running.
 	      if (!game.clockRunning) {
-	      	console.log("This has been entered.");
 	        game.intervalId = setInterval(function() {
-	        game.stopwatch.count();
 	        game.clockRunning = true;
-	        console.log(game.clockRunning);
+	        game.stopwatch.count();
 	        }, 1000);
 	      }
 	  },
 	  stop: function() {
 	    //  TODO: Use clearInterval to stop the count here and set the clock to not be running.
-	    console.log("The clock has stopped.");
 	    clearInterval(game.intervalId);
 	    game.clockRunning = false;
-	    console.log(game.clockRunning);
 	  },
 	  count: function() {
-	  	console.log("Tick.");
-	  	console.log(game.clockRunning);
 	    //  TODO: increment time by 1, remember we cant use "this" here.
 	    game.stopwatch.time--;
 
@@ -76,6 +86,7 @@ var game = {
 	    //  TODO: Use the variable you just created to show the converted time in the "display" div.
 	    // $("#display").text(currentTime);
 	    if (game.stopwatch.time === 0){
+
 	    	ui.questionAnswered({});
 	    };
 
@@ -100,6 +111,7 @@ var ui = {
 		for (var i = 0; i < 4; i++) {
 			this.answerDiv("div", game.answers[game.chosenQuestion][i],"answer mainBodyDiv", ".answersBox");
 		};
+		game.totalNumberOfQuestionsAnswered++;
 	},
 	otherDiv: function(elementType, htmlText, classesAdded, parentElement) {
 		$("<" + elementType + ">")
@@ -126,15 +138,56 @@ var ui = {
 		if ($(object).hasClass("correctAnswer")){
 			$(".currentQuestion")
 				.html("Correct");
+			game.numOfQuestionsCorrectlyAnswered++;
 		}
 		else {
-			$(".currentQuestion")
-				.html("Nope");
-		}
-        setTimeout(function() {
-        	ui.newQuestion();
-        }, 5000);
+			if ($(object).hasClass("answer")) {
+				$(".currentQuestion")
+					.html("Nope");
+				game.numOfQuestionsIncorrectlyAnswered++;
+			}
+			else {
+				$(".currentQuestion")
+					.html("Ran Out Of Time");
+				game.numOfQuestionsUnanswered++;
+			}
+		};
+		$("<img>")
+			.attr("src" , "assets/images/" + game.gifs[game.chosenQuestion])
+			.appendTo(".answersBox");
+		if (game.totalNumberOfQuestionsAnswered === 3) {
+	        setTimeout(function() {
+	        	ui.gameOver();
+	        }, 5000);
 
+		}
+		else {
+	        setTimeout(function() {
+	        	ui.newQuestion();
+	        }, 5000);
+    	}
+	},
+	gameOver: function(){
+		$(".answersBox").empty();
+		$(".currentQuestion")
+			.html("Alright! Here is how you did!");
+		$("<div>")
+			.html("Correct Answers: " + game.numOfQuestionsCorrectlyAnswered)
+			.appendTo(".answersBox");
+		$("<div>")
+			.html("Incorrect Answers: " + game.numOfQuestionsIncorrectlyAnswered)
+			.appendTo(".answersBox");
+		$("<div>")
+			.html("Unanswered: " + game.numOfQuestionsUnanswered)
+			.appendTo(".answersBox");
+		$("<div>")
+			.html("Start Over")
+			.addClass("startBtn")
+			.appendTo(".answersBox")
+			.on("click" , function(){
+				game.reset();
+				ui.newQuestion();
+			});
 	}
 }
 
