@@ -80,9 +80,9 @@ var game = {
 	clockRunning: false,
 	//  Our stopwatch object.
 	stopwatch: {
-	  time: 5,
+	  time: 10,
 	  reset: function() {
-	    game.stopwatch.time = 5;
+	    game.stopwatch.time = 10;
 	    //  TODO: Change the "display" div to "00:00."
 	  },
 	  start: function() {
