@@ -32,7 +32,7 @@ var searchString = {
 	api_key: "5d8a8510f5534d128ca41a306b65392d",
 	q: "",
 	limit: 10,
-	rating: "r"
+	rating: "g"
 };
 
 //Giphy API call
