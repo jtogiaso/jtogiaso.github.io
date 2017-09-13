@@ -25,7 +25,7 @@ var toQueryString = function() {
 }
 
 //Constant String for URL
-var queryString = "http://api.giphy.com/v1/gifs/search";
+var queryString = "https://api.giphy.com/v1/gifs/search";
 
 //Object for string parameters
 var searchString = {
