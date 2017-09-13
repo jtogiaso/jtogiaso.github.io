@@ -1,0 +1,17 @@
+.oneThird {
+	display: inline-block;
+	width: 33%;
+	margin: 10px auto;
+}
+
+button {
+	color: blue;
+	background-color: gold;
+	margin: 5px;
+}
+
+button:hover {
+	color: white;
+	background-color: aquamarine;
+}
+
