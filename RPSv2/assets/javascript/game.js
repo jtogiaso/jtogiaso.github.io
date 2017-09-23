@@ -18,8 +18,10 @@ var thisPushKey = "";
 var iAmPlayer = 0;
 var isThereAPlayer1 = false;
 var isThereAPlayer2 = false;
-var submitChatCheck = false;
+var whosTurnIsIt = 0;
 var elementChosen = false;
+var opponentKey = "";
+var oneTurn = false;
 
 $(document).ready(function(){
 
@@ -33,6 +35,38 @@ $(document).ready(function(){
 
 	database.ref().on("value", function(snapshot){
 		numberOfPlayers = parseInt(snapshot.val().numOfPlayers);
+		whosTurnIsIt = parseInt(snapshot.val().whosTurn);
+		console.log("i am in the snapshot")
+		if(!oneTurn){
+			console.log("Passed one turn");
+			if (whosTurnIsIt === 1){
+				$("#instructionsDiv").html("Player 1, it is your turn!");
+				oneTurn = true;
+			}
+			if (whosTurnIsIt === 2){
+				$("#instructionsDiv").html("Player 2, it is your turn!");
+				oneTurn = true;
+			}
+			if (whosTurnIsIt === 4){
+				console.log("Passed the end");
+				oneTurn = true;
+				$("#instructionsDiv").html("Well it is the game!");
+				var player1choice = "";
+				var player2choice = "";
+				snapshot.child("browserSessions").forEach(function(childSnapshot){
+					console.log(childSnapshot.key)
+					var childCheck = parseInt(childSnapshot.val().player);
+					if (childCheck === 1){
+						player1choice = childSnapshot.val().chosenElement;
+						console.log(player1choice);
+					}
+					if (childCheck === 2){
+						player2choice = childSnapshot.val().chosenElement;
+						console.log(player2choice);
+					}
+				});
+			}
+		}
 	});
 	database.ref("/browserSessions").on("value", function(snapshot){
 		snapshot.forEach(function(childSnapshot){
@@ -47,6 +81,10 @@ $(document).ready(function(){
 				if (childSnapshot.hasChild("player") && playerNumber === 2) {
 					isThereAPlayer2 = true;
 					$("#player2Name").html(childSnapshot.val().player_Name);
+					database.ref().update({
+						whosTurn: 1
+					});
+					oneTurn = false;
 				}
 			}
 		})
@@ -77,10 +115,21 @@ $(document).ready(function(){
 	//Player 1 Box
 	$("#elementOptions1 div img.picOption").on("click" , function() {
 		if(isThereAPlayer2 && iAmPlayer == 1){
-			if (!elementChosen){
-				elementChosen = true;
-				$("#chosenElement1 div img ")
-					.attr("src" , $(this).attr("src"));
+			if (whosTurnIsIt === 1){
+				if (!elementChosen){
+					elementChosen = true;
+					$("#chosenElement1 div img ")
+						.attr("src" , $(this).attr("src"));
+					database.ref().update({
+						whosTurn: 2
+					});
+					oneTurn = false;
+			    	database.ref("/browserSessions").child(thisPushKey).update({
+			    		chosenElementSrc: $(this).attr("src"),
+			    		chosenElement: $(this).attr("alt")
+
+			    	});
+				}
 			}
 		}
 	});
@@ -88,10 +137,20 @@ $(document).ready(function(){
 	//Player 2 Box
 	$("#elementOptions2 div img.picOption").on("click" , function() {
 		if(isThereAPlayer2 && iAmPlayer == 2){
-			if (!elementChosen){
-				elementChosen = true;
-				$("#chosenElement2 div img ")
-					.attr("src" , $(this).attr("src"));
+			if (whosTurnIsIt === 2){
+				if (!elementChosen){
+					elementChosen = true;
+					$("#chosenElement2 div img ")
+						.attr("src" , $(this).attr("src"));
+					database.ref().update({
+						whosTurn: 4
+					});
+					oneTurn = false;
+			    	database.ref("/browserSessions").child(thisPushKey).update({
+			    		chosenElementSrc: $(this).attr("src"),
+			    		chosenElement: $(this).attr("alt")
+			    	});
+				}
 			}
 		}
 	});
@@ -140,7 +199,8 @@ $(window).on("beforeunload" , function(){
 	if (isThisPlayerReady) {
 		numberOfPlayers--;
 	    database.ref().update({
-	    	numOfPlayers: numberOfPlayers
+	    	numOfPlayers: numberOfPlayers,
+	    	whosTurn: 0
 	    })
 	}
     database.ref("/browserSessions").child(thisPushKey).remove();
