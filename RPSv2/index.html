@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html class="">
+	<head>
+		<title>Rock! Paper! Scissors!</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+		<script type="text/javascript" src="assets/javascript/game.js"></script>
+	</head>
+	<body>
+		<div class="row regularBorder">
+			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+			</div>
+			<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+				<div class="row mainBody regularBorder">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="row title regularBorder">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<h1 class="text-center title">RoChamBeau</h1>
+							</div>
+						</div>
+						<div class="row instructions regularBorder">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<h3 class="text-center instructionsDivStyle" id="instructionsDiv">Instructions</h3>
+							</div>
+						</div>
+						<div class="row regularBorder">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+								<button id="playerNameSubmit" class="playerNameSubmitBtn">Submit</button>
+								<input type="text" placeholder="Your Player Name" id="playerNameInput">
+							</div>
+						</div>
+						<div class="row gameBody regularBorder">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<div class="row regularBorder" id="chosenElement1">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 img-wrap">
+										<img src="assets/images/blank.jpg" alt="blank" class="img-responsive">
+									</div>
+								</div>
+								<div class="row regularBorder" id="elementOptions1">
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center img-wrap">
+										<img src="assets/images/rock.png" alt="rock" class="picOption img-responsive">
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center img-wrap">
+										<img src="assets/images/paper.jpg" alt="paper" class="picOption img-responsive">
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center img-wrap">
+										<img src="assets/images/scissors.png" alt="scissors" class="picOption img-responsive">
+									</div>
+								</div>
+								<div class="row regularBorder playerName">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" id="player1Name">
+										Player 1
+									</div>
+								</div>
+								<div class="row regularBorder winLossSpot text-center">
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+										W-L Record
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+										<div class="row text-center" id="player1winLossRecord">
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="player1Wins">0</div>
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">-</div>
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="player1Losses">0</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<div class="row regularBorder" id="chosenElement2">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 img-wrap">
+										<img src="assets/images/blank.jpg" alt="blank" class="img-responsive">
+									</div>
+								</div>
+								<div class="row regularBorder" id="elementOptions2">
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 img-wrap">
+										<img src="assets/images/rock.png" alt="rock" class="picOption img-responsive">
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 img-wrap">
+										<img src="assets/images/paper.jpg" alt="paper" class="picOption img-responsive">
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 img-wrap">
+										<img src="assets/images/scissors.png" alt="scissors" class="picOption img-responsive">
+									</div>
+								</div>
+								<div class="row regularBorder playerName">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" id="player2Name">
+										Player 2
+									</div>
+								</div>
+								<div class="row regularBorder winLossSpot text-center">
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+										W-L Record
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+										<div class="row text-center" id="player2winLossRecord">
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="player2Wins">0</div>
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">-</div>
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="player2Losses">0</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row chatBoxWrap regularBorder">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div id="chatBoxTitle" class="text-center">
+									Smack Talk to Your Opponent
+								</div>
+								<div id="chatBox" class="chatBoxStyle well">
+									
+								</div>
+								<div id="chat-input-form" class="chat-input-style">
+									<button id="chat-submit" class="chat-button">Submit</button>
+									<input type="text" id="chat-input" class="input-100-pc-wide">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+			</div>
+		</div>
+	</body>
+</html>

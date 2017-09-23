@@ -1,0 +1,41 @@
+.regularBorder {
+	border: solid purple 5px;
+}
+
+div.img-wrap img {
+	width: 200px;
+	height: 200px;
+	background-color: black;
+	text-align: center;
+}
+
+.chat-input-style {
+	display: flex;
+}
+
+.input-100-pc-wide {
+	width: 100%;
+	flex: auto;
+	border: solid grey 1px;
+}
+
+.input-100-pc-wide:focus{
+	background-color: tan;
+}
+
+.chat-button{
+	flex: initial;
+	background-color: black;
+	color: white;
+}
+
+.chat-button:hover{
+	background-color: teal;
+}
+
+.chatBoxStyle {
+	height: 150px;
+	border: solid black 2px;
+	overflow: auto;
+	box-shadow: 2px 2px;
+}
