@@ -65,6 +65,15 @@ $(document).ready(function(){
 						console.log(player2choice);
 					}
 				});
+				if (player2choice === player1choice){
+					$("#instructionsDiv").html("Tie game! You both chose: " + player2choice);
+				}
+				else if((player1choice === "scissors" && player2choice === "paper") || (player1choice === "paper" && player2choice === "rock") || (player1choice === "rock" && player2choice === "scissors")){
+					$("#instructionsDiv").html("Player 1 wins");
+				}
+				else{
+					$("#instructionsDiv").html("Player 2 wins");
+				}
 			}
 		}
 	});
