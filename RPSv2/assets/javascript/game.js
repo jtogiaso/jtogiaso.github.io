@@ -47,36 +47,40 @@ $(document).ready(function(){
 				$("#instructionsDiv").html("Player 2, it is your turn!");
 				oneTurn = true;
 			}
-			if (whosTurnIsIt === 4){
-				console.log("Passed the end");
-				oneTurn = true;
-				$("#instructionsDiv").html("Well it is the game!");
-				var player1choice = "";
-				var player2choice = "";
-				snapshot.child("browserSessions").forEach(function(childSnapshot){
-					console.log(childSnapshot.key)
-					var childCheck = parseInt(childSnapshot.val().player);
-					if (childCheck === 1){
-						player1choice = childSnapshot.val().chosenElement;
-						console.log(player1choice);
-					}
-					if (childCheck === 2){
-						player2choice = childSnapshot.val().chosenElement;
-						console.log(player2choice);
-					}
-				});
-				if (player2choice === player1choice){
-					$("#instructionsDiv").html("Tie game! You both chose: " + player2choice);
+		}
+		if (whosTurnIsIt === 4){
+			console.log("Passed the end");
+			oneTurn = true;
+			$("#instructionsDiv").html("Well it is the game!");
+			var player1choice = "";
+			var player2choice = "";
+			snapshot.child("browserSessions").forEach(function(childSnapshot){
+				console.log(childSnapshot.key)
+				var childCheck = parseInt(childSnapshot.val().player);
+				if (childCheck === 1){
+					player1choice = childSnapshot.val().chosenElement;
+					console.log(player1choice);
 				}
-				else if((player1choice === "scissors" && player2choice === "paper") || (player1choice === "paper" && player2choice === "rock") || (player1choice === "rock" && player2choice === "scissors")){
-					$("#instructionsDiv").html("Player 1 wins");
+				if (childCheck === 2){
+					player2choice = childSnapshot.val().chosenElement;
+					console.log(player2choice);
 				}
-				else{
-					$("#instructionsDiv").html("Player 2 wins");
-				}
+			});
+			if (player2choice === player1choice){
+				$("#instructionsDiv").html("Tie game! You both chose: " + player2choice);
 			}
+			else if((player1choice === "scissors" && player2choice === "paper") || (player1choice === "paper" && player2choice === "rock") || (player1choice === "rock" && player2choice === "scissors")){
+				$("#instructionsDiv").html("Player 1 wins");
+			}
+			else{
+				$("#instructionsDiv").html("Player 2 wins");
+			}
+			database.ref().update({
+				whosTurn: 0
+			});
 		}
 	});
+	
 	database.ref("/browserSessions").on("value", function(snapshot){
 		snapshot.forEach(function(childSnapshot){
 			var playerNumber = parseInt(childSnapshot.val().player);
@@ -117,7 +121,6 @@ $(document).ready(function(){
 	    	});
 	    	iAmPlayer = numberOfPlayers;
     	}
-
     });
 
 	
