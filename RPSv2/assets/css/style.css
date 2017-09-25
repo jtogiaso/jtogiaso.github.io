@@ -1,5 +1,16 @@
 .regularBorder {
-	border: solid purple 5px;
+	border: solid gray 5px;
+	padding: 5px;
+}
+
+body {
+	padding-top: 10px;
+	color: antiquewhite;
+	background-color: purple;
+}
+
+input {
+	color: black;
 }
 
 div.img-wrap img {
@@ -7,6 +18,26 @@ div.img-wrap img {
 	height: 200px;
 	background-color: black;
 	text-align: center;
+}
+
+.instructions {
+	height: 100%;
+}
+
+.flexVert {
+	display: table;
+	height: 100%;
+}
+
+.flexVertDescendant1 {
+	display: table-row;
+	background-color: orange;
+}
+
+.flexVertDescendant2{
+	display: table-row;
+	background-color: green;
+	height: 100%;
 }
 
 .chat-input-style {
@@ -38,6 +69,7 @@ div.img-wrap img {
 	border: solid black 2px;
 	overflow: auto;
 	box-shadow: 2px 2px;
+	color: black;
 }
 
 
@@ -46,5 +78,21 @@ div.img-wrap img {
 }
 
 .p2 {
-	color: maroon;
+	color: khaki;
+}
+
+.gold {
+	background-color: purple;
+}
+
+.crimson {
+	background-color: crimson;
+}
+
+.playerNameSubmitBtn {
+	color: black;
+}
+
+.instructionsDiv {
+	height: auto;
 }

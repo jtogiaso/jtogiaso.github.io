@@ -22,6 +22,24 @@ var whosTurnIsIt = 0;
 var elementChosen = false;
 var opponentKey = "";
 var oneTurn = false;
+var opponentsWins = 0;
+var opponentsLosses = 0;
+var myWins = 0;
+var myLosses = 0;
+var currentGameEnd = false;
+
+var endOfSession = function () {
+	var goodByeKey = "browserSessions/" + thisPushKey;
+	var gentle = numberOfPlayers;
+	if (isThisPlayerReady){
+		gentle = numberOfPlayers--;
+	}
+    database.ref().update({
+    	numOfPlayers: numberOfPlayers,
+    	whosTurn: 52,
+    	[goodByeKey]: null
+    });
+}
 
 $(document).ready(function(){
 
@@ -36,51 +54,91 @@ $(document).ready(function(){
 	database.ref().on("value", function(snapshot){
 		numberOfPlayers = parseInt(snapshot.val().numOfPlayers);
 		whosTurnIsIt = parseInt(snapshot.val().whosTurn);
-		console.log("i am in the snapshot")
 		if(!oneTurn){
-			console.log("Passed one turn");
 			if (whosTurnIsIt === 1){
 				$("#instructionsDiv").html("Player 1, it is your turn!");
 				oneTurn = true;
+				currentGameEnd = true;
 			}
 			if (whosTurnIsIt === 2){
 				$("#instructionsDiv").html("Player 2, it is your turn!");
 				oneTurn = true;
+				currentGameEnd = true;
 			}
 		}
-		if (whosTurnIsIt === 4){
-			console.log("Passed the end");
+		if (whosTurnIsIt === 4 && currentGameEnd){
+			currentGameEnd = false;
 			oneTurn = true;
-			$("#instructionsDiv").html("Well it is the game!");
 			var player1choice = "";
 			var player2choice = "";
 			snapshot.child("browserSessions").forEach(function(childSnapshot){
-				console.log(childSnapshot.key)
 				var childCheck = parseInt(childSnapshot.val().player);
 				if (childCheck === 1){
 					player1choice = childSnapshot.val().chosenElement;
-					console.log(player1choice);
+					if (iAmPlayer == 2){
+						opponentKey = childSnapshot.key;
+						opponentsWins = parseInt(childSnapshot.val().wins);
+						opponentsLosses = parseInt(childSnapshot.val().losses);
+					}
+					else if (iAmPlayer == 1) {
+						myWins = parseInt(childSnapshot.val().wins);
+						myLosses = parseInt(childSnapshot.val().losses);
+					}
 				}
 				if (childCheck === 2){
 					player2choice = childSnapshot.val().chosenElement;
-					console.log(player2choice);
+					if (iAmPlayer == 1){
+						opponentKey = childSnapshot.key;
+						opponentsWins = parseInt(childSnapshot.val().wins);
+						opponentsLosses = parseInt(childSnapshot.val().losses);
+
+					}
+					else if (iAmPlayer == 2) {
+						myWins = parseInt(childSnapshot.val().wins);
+						myLosses = parseInt(childSnapshot.val().losses);
+					}
 				}
 			});
 			if (player2choice === player1choice){
-				$("#instructionsDiv").html("Tie game! You both chose: " + player2choice);
+				if (true){
+					$("#instructionsDiv").html("Tie game! You both chose: " + player2choice);
+					currentGameEnd = false;
+				}
 			}
 			else if((player1choice === "scissors" && player2choice === "paper") || (player1choice === "paper" && player2choice === "rock") || (player1choice === "rock" && player2choice === "scissors")){
-				$("#instructionsDiv").html("Player 1 wins");
+				if (true){
+					$("#instructionsDiv").html("Player 1 wins");				
+					if(iAmPlayer == 1) {
+						myWins++;
+						opponentsLosses++;
+						database.ref().update({
+							["browserSessions/" + thisPushKey + "/wins"]: myWins,
+						    ["browserSessions/" + opponentKey + "/losses"]: opponentsLosses
+						});
+					}
+					currentGameEnd = false;
+				}
 			}
 			else{
-				$("#instructionsDiv").html("Player 2 wins");
+				if (true){
+					$("#instructionsDiv").html("Player 2 wins");
+					if(iAmPlayer == 2) {
+						myWins++;
+						opponentsLosses++;
+						database.ref().update({
+							["browserSessions/" + thisPushKey + "/wins"]: myWins,
+						    ["browserSessions/" + opponentKey + "/losses"]: opponentsLosses
+						});
+					}
+					currentGameEnd = false;
+				}
 			}
 			database.ref().update({
 				whosTurn: 0
 			});
 		}
 	});
-	
+
 	database.ref("/browserSessions").on("value", function(snapshot){
 		snapshot.forEach(function(childSnapshot){
 			var playerNumber = parseInt(childSnapshot.val().player);
@@ -133,14 +191,11 @@ $(document).ready(function(){
 					$("#chosenElement1 div img ")
 						.attr("src" , $(this).attr("src"));
 					database.ref().update({
-						whosTurn: 2
+						whosTurn: 2,
+						["browserSessions/" + thisPushKey + "/chosenElementSrc"]: $(this).attr("src"),
+					    ["browserSessions/" + thisPushKey + "/chosenElement"]: $(this).attr("alt")
 					});
 					oneTurn = false;
-			    	database.ref("/browserSessions").child(thisPushKey).update({
-			    		chosenElementSrc: $(this).attr("src"),
-			    		chosenElement: $(this).attr("alt")
-
-			    	});
 				}
 			}
 		}
@@ -155,13 +210,11 @@ $(document).ready(function(){
 					$("#chosenElement2 div img ")
 						.attr("src" , $(this).attr("src"));
 					database.ref().update({
-						whosTurn: 4
+						whosTurn: 4,
+						["browserSessions/" + thisPushKey + "/chosenElementSrc"]: $(this).attr("src"),
+					    ["browserSessions/" + thisPushKey + "/chosenElement"]: $(this).attr("alt")
 					});
 					oneTurn = false;
-			    	database.ref("/browserSessions").child(thisPushKey).update({
-			    		chosenElementSrc: $(this).attr("src"),
-			    		chosenElement: $(this).attr("alt")
-			    	});
 				}
 			}
 		}
@@ -208,13 +261,5 @@ $(document).ready(function(){
 
 //When window closes, change number of windows by -1, and removes session from firebase
 $(window).on("beforeunload" , function(){
-	if (isThisPlayerReady) {
-		numberOfPlayers--;
-	    database.ref().update({
-	    	numOfPlayers: numberOfPlayers,
-	    	whosTurn: 0
-	    })
-	}
-    database.ref("/browserSessions").child(thisPushKey).remove();
-
+	endOfSession();
 });

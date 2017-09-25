@@ -11,11 +11,11 @@
 		<script type="text/javascript" src="assets/javascript/game.js"></script>
 	</head>
 	<body>
-		<div class="row regularBorder">
-			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+		<div class="row gold">
+			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 gold">
 			</div>
-			<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-				<div class="row mainBody regularBorder">
+			<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 crimson">
+				<div class="row mainBody">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="row title regularBorder">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -23,17 +23,36 @@
 							</div>
 						</div>
 						<div class="row instructions regularBorder">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<h3 class="text-center instructionsDivStyle" id="instructionsDiv">Instructions</h3>
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 flexVert">
+								<div class="regularBorder flexVertDescendant1">
+									<h3 class="text-center" id="namePlate">Welcome!</h3>
+								</div>
+								<div class="regularBorder flexVertDescendant2">
+									<h3 class="text-center instructionsDivStyle" id="instructionsDiv">Please Submit Your Name to Begin Anything!</h3>
+								</div>
 							</div>
-						</div>
-						<div class="row regularBorder">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
 								<button id="playerNameSubmit" class="playerNameSubmitBtn">Submit</button>
 								<input type="text" placeholder="Your Player Name" id="playerNameInput">
 							</div>
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+								<div class="row chatBoxWrap regularBorder">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<div id="chatBoxTitle" class="text-center">
+											Smack Talk Your Opponent
+										</div>
+										<div id="chatBox" class="chatBoxStyle well">
+											
+										</div>
+										<div id="chat-input-form" class="chat-input-style">
+											<button id="chat-submit" class="chat-button">Submit</button>
+											<input type="text" id="chat-input" class="input-100-pc-wide">
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="row gameBody regularBorder">
+						<div class="row gameBody">
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 								<div class="row regularBorder" id="chosenElement1">
 									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 img-wrap">
@@ -52,12 +71,12 @@
 									</div>
 								</div>
 								<div class="row regularBorder playerName">
-									<h1 class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+									<h3 class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
 										Player 1
-									</h1>
-									<h1 class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center p1" id="player1Name">
+									</h3>
+									<h3 class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center p1" id="player1Name">
 										Waiting!
-									</h1>
+									</h3>
 								</div>
 								<div class="row regularBorder winLossSpot text-center">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -90,12 +109,12 @@
 									</div>
 								</div>
 								<div class="row regularBorder playerName">
-									<h1 class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+									<h3 class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
 										Player 2
-									</h1>
-									<h1 class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center p2" id="player2Name">
+									</h3>
+									<h3 class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center p2" id="player2Name">
 										Waiting!
-									</h1>
+									</h3>
 								</div>
 								<div class="row regularBorder winLossSpot text-center">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -111,24 +130,10 @@
 								</div>
 							</div>
 						</div>
-						<div class="row chatBoxWrap regularBorder">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div id="chatBoxTitle" class="text-center">
-									Smack Talk to Your Opponent
-								</div>
-								<div id="chatBox" class="chatBoxStyle well">
-									
-								</div>
-								<div id="chat-input-form" class="chat-input-style">
-									<button id="chat-submit" class="chat-button">Submit</button>
-									<input type="text" id="chat-input" class="input-100-pc-wide">
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 gold">
 			</div>
 		</div>
 	</body>
