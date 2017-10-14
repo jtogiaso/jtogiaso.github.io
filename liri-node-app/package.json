@@ -1,0 +1,25 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "L.I.R.I is a bot that interprets and recognizes language",
+  "main": "index.js",
+  "scripts": {
+    "test": "which node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtogiaso/liri-node-app.git"
+  },
+  "keywords": [
+    "LIRI"
+  ],
+  "author": "jtogiaso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jtogiaso/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/jtogiaso/liri-node-app#readme",
+  "dependencies": {
+    "inquirer": "^3.3.0"
+  }
+}

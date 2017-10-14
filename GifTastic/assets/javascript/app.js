@@ -85,9 +85,6 @@ var displayGif = function(alt , src , rating){
 	;
 };
 
-
-
-
 $(document).ready(function(){
 	//Create buttons from Topics array and append to page
 	for (var i in topics) {
