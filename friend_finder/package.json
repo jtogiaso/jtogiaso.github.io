@@ -1,0 +1,30 @@
+{
+  "name": "friend_finder",
+  "version": "1.0.0",
+  "description": "Find your friends, or maybe even an SO",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtogiaso/friend_finder.git"
+  },
+  "keywords": [
+    "friend",
+    "finder"
+  ],
+  "author": "jtogiaso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jtogiaso/friend_finder/issues"
+  },
+  "homepage": "https://github.com/jtogiaso/friend_finder#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
+  }
+}
