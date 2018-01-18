@@ -1,63 +1,42 @@
-// Dependencies
-var express = require("express");
-var exphbs = require("express-handlebars");
+// *****************************************************************************
+// Server.js - This file is the initial starting point for the Node/Express server.
+//
+// ******************************************************************************
+// *** Dependencies
+// =============================================================
+const express = require('express')
+const app = express();
+const bodyParser = require('body-parser');
+const exphbs = require('express-handlebars');
+const PORT = process.env.PORT || 3300;
 
-// Create an instance of the express app.
-var app = express();
+//For BodyParser
+// =============================================================
+// Sets up the Express app to handle data parsing
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-// Specify the port.
-var port = 3000;
-
-// Set Handlebars as the default templating engine.
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
-
-// Data
-var icecreams = [
-  { name: "vanilla", price: 10, awesomeness: 3 },
-  { name: "chocolate", price: 4, awesomeness: 8 },
-  { name: "banana", price: 1, awesomeness: 1 },
-  { name: "greentea", price: 5, awesomeness: 7 },
-  { name: "jawbreakers", price: 6, awesomeness: 2 },
-  { name: "vanilla", price: 10, awesomeness: 3 }
-];
+// Static directory
+// =============================================================
+app.use(express.static('app/public'));
 
 // Routes
-app.get("/icecream/:name", function(req, res) {
-  for (var i = 0; i < icecreams.length; i++) {
-    if (icecreams[i].name === req.params.name) {
-      res.render("icecream", icecreams[i]);
-    }
-  }
-});
+// =============================================================
 
-app.get("/icecream", function(req, res) {
-  res.render("ics", { ics: icecreams });
-});
-
-app.get("/", function(req, res) {
-  console.log(res);
-  res.json(simpleStringify(res));
-});
+require("./app/routing/api_routes.js")(app);
+require("./app/routing/html_routes.js")(app);
 
 
 // Initiate the listener.
-app.listen(port);
+app.listen(PORT, function(err) {
 
+  if (!err){
+    console.log("App listening on PORT " + PORT);
+  }
+  else {
+    console.log(err)
+  }
 
-function simpleStringify (object){
-    var simpleObject = {};
-    for (var prop in object ){
-        if (!object.hasOwnProperty(prop)){
-            continue;
-        }
-        if (typeof(object[prop]) == 'object'){
-            continue;
-        }
-        if (typeof(object[prop]) == 'function'){
-            continue;
-        }
-        simpleObject[prop] = object[prop];
-    }
-    return simpleObject; // returns cleaned up JSON
-};
+});

@@ -1,0 +1,43 @@
+{
+  "name": "react-prac-auth",
+  "version": "1.0.0",
+  "description": "Practice with Mongodb, React, Passport",
+  "main": "node server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node --use_strict index.js",
+    "bundle": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtogiaso/react-prac-auth.git"
+  },
+  "keywords": [
+    "Fun"
+  ],
+  "author": "jtogiaso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jtogiaso/react-prac-auth/issues"
+  },
+  "homepage": "https://github.com/jtogiaso/react-prac-auth#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "material-ui": "^0.20.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-tap-event-plugin": "^3.0.2",
+    "validator": "^9.2.0",
+    "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1"
+  }
+}
